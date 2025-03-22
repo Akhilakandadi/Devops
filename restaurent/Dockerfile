@@ -29,7 +29,7 @@ COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
 # Copy project files
 COPY . .
-
+RUN python manage.py collectstatic --noinput
 # Expose port for Gunicorn
 EXPOSE 8000
 
