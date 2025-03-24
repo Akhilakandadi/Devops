@@ -1,13 +1,19 @@
-restaurent/
-│
-├── appspec.yml               # app deploy configuration file
-├── scripts/                   # Folder for the deployment scripts
-│   ├── install_dependencies.sh
-│   ├── migrate.sh
-│   └── start_application.sh
-│
-├── manage.py                 # Your Django project management script
-├── requirements.txt          # Python dependencies
-├── restaurent/               # Django app folder
-│   └── ...
-└── other Django project files
+version: 0.0
+os: linux
+files:
+  - source: /    # Copy everything from the source
+    destination: /var/www/html/django_app/  # Or wherever you want to place the files
+
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 180
+      runas: root
+  AfterInstall:
+    - location: scripts/migrate.sh
+      timeout: 180
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_application.sh
+      timeout: 180
+      runas: root
