@@ -1,0 +1,13 @@
+restaurent/
+│
+├── appspec.yml               # app deploy configuration file
+├── scripts/                   # Folder for the deployment scripts
+│   ├── install_dependencies.sh
+│   ├── migrate.sh
+│   └── start_application.sh
+│
+├── manage.py                 # Your Django project management script
+├── requirements.txt          # Python dependencies
+├── restaurent/               # Django app folder
+│   └── ...
+└── other Django project files
